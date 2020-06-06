@@ -17,13 +17,13 @@
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
 function lucasNumber(n) {
- 
-    if(n === 0) return 2
-    if(n === 1) return 1
-    return lucasNumber(n-1 ) + lucasNumber(n-2)
-   
-
+    // if(n === 0) return 2
+    // if(n === 1) return 1
+    // return lucasNumber(n-1 ) + lucasNumber(n-2)
+    let a  = 0 ; a = b
 }
+
+
 
 
 // Write a function, sumArray(array), that takes in an array of numbers.
@@ -108,7 +108,7 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
-
+ 
 }
 
 // Write a function, fileFinder(directories, targetFile), that accepts an object representing directories and a string respresenting a filename.
