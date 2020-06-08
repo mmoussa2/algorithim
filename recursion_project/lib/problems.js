@@ -17,9 +17,9 @@
 // lucasNumber(5)   // => 11
 // lucasNumber(9)   // => 76
 function lucasNumber(n) {
-    // if(n === 0) return 2
-    // if(n === 1) return 1
-    // return lucasNumber(n-1 ) + lucasNumber(n-2)
+    if(n === 0) return 2
+    if(n === 1) return 1
+    return lucasNumber(n-1 ) + lucasNumber(n-2)
     let a  = 0 ; a = b
 }
 
@@ -38,7 +38,13 @@ function lucasNumber(n) {
 // sumArray([5, 2])         // => 7
 // sumArray([4, 10, -1, 2]) // => 15
 function sumArray(array) {
+//First Solution: T: O(n) S:(1)
+// if(array.length === 0) return 0;
+//   return array.reduce((acc,curr) => acc + curr)
 
+//Second Solution: T: O(n) S:(n)
+if(array.length === 0) return 0;
+return array[0] + sumArray(array.slice(1));
 }
 
 
@@ -54,7 +60,8 @@ function sumArray(array) {
 // reverseString("internet")    // => "tenretni"
 // reverseString("friends")     // => "sdneirf"
 function reverseString(str) {
-
+    if(str.length ===0 ) return "";
+    return reverseString(str.slice(1)) + str[0]
 }
 
 
@@ -75,6 +82,16 @@ function reverseString(str) {
 // pow(3, 4)    // => 81
 // pow(2, -5)   // => 0.03125
 function pow(base, exponent) {
+
+    if(exponent === 0){
+        return 1;
+    }else if(exponent > 0){
+       
+        return base * pow(base, exponent -1);
+    }else if(exponent < 0){
+        console.log(exponent)
+        return 1/(pow(base, - exponent))
+    }
 
 }
 
@@ -108,6 +125,14 @@ function pow(base, exponent) {
 //     2-dimensional array: [['some data']]
 //     3-dimensional array: [[['some data']]]
 function flatten(data) {
+ if(!Array.isArray(data)) return [data];
+ let allElements = [];
+
+ data.forEach(ele=>{
+     let flattened = flatten(ele);
+     allElements.push(...flattened);
+ });
+ return allElements;
  
 }
 
@@ -151,7 +176,25 @@ function flatten(data) {
 // fileFinder(desktop, 'everlong.flac');            // => true
 // fileFinder(desktop, 'sequoia.jpeg');             // => false
 function fileFinder(directories, targetFile) {
+//    for(let key in directories){
+//        if (key === targetFile || fileFinder(directories[key], targetFile)) {
+//            return true;
+//        }
+//     };
+//     return false;
 
+//Second Solution:
+    for(let key in directories){
+        if(key === targetFile) {
+            return true;
+        }
+        
+        let result =  fileFinder(directories[key], targetFile);
+        if(result === true) {
+            return true;
+        }
+    }
+    return false;
 }
 
 
