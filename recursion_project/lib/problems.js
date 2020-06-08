@@ -188,7 +188,6 @@ function fileFinder(directories, targetFile) {
         if(key === targetFile) {
             return true;
         }
-        
         let result =  fileFinder(directories[key], targetFile);
         if(result === true) {
             return true;
@@ -208,6 +207,21 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'everlong.flac'));       // => '/music/genres/rock/everlong.flac'
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
+
+for(let key in directories){
+    if(key === targetFile){
+        return "/" + targetFile;
+    }
+ 
+    let result = pathFinder(directories[key], targetFile);
+    if(result){
+        console.log(key)
+        console.log(result);
+        console.log("........")
+        return  key + result;
+    }
+}
+return null;
 
 }
 
