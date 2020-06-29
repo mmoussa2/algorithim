@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // for (var i = 0; i < 5; i++) {
+    //     var btn = document.createElement('button');
+    //     btn.appendChild(document.createTextNode('Button ' + i));
+        // this always print 5: 
+        // btn.addEventListener('click', function () { console.log(i); });
+       
+        // solve 1:
+        // btn.addEventListener('click', (function(i){
+        //   return function(){
+        //     console.log(i);
+        //   }
+        // } )(i))
+
+        //solve2: 
+      //   (function(i){
+      //     btn.addEventListener('click', function(){
+      //     console.log(i);
+      //   })
+      // })(i)
+
+        //solve 3:
+        //instead of var we replace it by let
+        //solution goes down , after document
+
+
+      //   document.body.appendChild(btn);
+      // }
+
+      for(let i = 0 ; i < 5 ; i++){
+        btn = document.createElement('button');
+        btn.appendChild(document.createTextNode('button '+ i));
+        btn.addEventListener('click', function(){
+          console.log(i);
+        })
+        document.body.appendChild(btn);
+      }
+  </script>
+</body>
+</html>

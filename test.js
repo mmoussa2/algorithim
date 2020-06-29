@@ -188,7 +188,9 @@ var bar = null;  // null is an object
 
 function sum(x){
   if(arguments.length === 2){
+    console.log(arguments);
     return arguments[0] + arguments[1];
+    
   }
    return function(y){
       return x + y
@@ -197,6 +199,6 @@ function sum(x){
 }
 
 console.log(sum(2,3));
-console.log(sum(2)(3));
+//console.log(sum(2)(3));
 
 //............................
