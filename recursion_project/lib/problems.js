@@ -208,17 +208,14 @@ function fileFinder(directories, targetFile) {
 // pathFinder(desktop, 'honeybadger.png'));     // => null
 function pathFinder(directories, targetFile) {
 
-for(let key in directories){
-    if(key === targetFile){
+for(let name in directories){
+    if(name === targetFile){
         return "/" + targetFile;
     }
- 
-    let result = pathFinder(directories[key], targetFile);
-    if(result){
-        console.log(key)
-        console.log(result);
-        console.log("........")
-        return  key + result;
+    let subDirectory = directories[name];
+    let subPath = pathFinder(subDirectory, targetFile);
+    if(subPath){
+        return name+ subPath;
     }
 }
 return null;

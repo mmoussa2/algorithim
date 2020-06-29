@@ -12,7 +12,7 @@
 
 //if arr is sorted:
 
-//First Solution:
+//First Solution: T: O(nlogn) S: O(n)
 function findSumSorted(arr, val){
   for(let i = 0; i < arr.length; i++){
 
@@ -67,18 +67,19 @@ const binarySearch = (array, target) => {
   }
 
   console.log("Target value not found in array");
+  return false;
 }
 
 
 
-//Second Solution:
+//Second Solution: T: O(n) S: O(1)
 function findSumSorted1(arr, val) {
   let sum = 0;
   let start = 0;
   let end = arr.length -1;
 
   while(start < end){
-    sum = arr[start]+ arr[end]
+    sum = arr[start] + arr[end]
     if(sum > val){
       end--;
     }else if(sum < val){
@@ -90,7 +91,7 @@ function findSumSorted1(arr, val) {
   return false;
 }
 
-
+// T: O(n) S:(n)
 function findSumUnsorted(arr,val){
   let searchValues = new Set();
   let com = 0;
@@ -109,5 +110,84 @@ const findSumUnsorted2 = (arr,val)=>{
   return arr.some((set=>n=> set.has(n)) || !set.add(sum - n)(new Set));
 }
 
-console.log(findSumSorted([1, 2, 4, 4], 8));
+//console.log(findSumSorted([1, 2, 4, 4], 8));
 //console.log(findSumUnsorted2([1,2,3,4], 8));
+
+
+function pow(base, exponent) {
+
+  if (exponent === 0) {
+    return 1;
+  } else if (exponent > 0) {
+    console.log(base * pow(base, exponent - 1))
+    return base * pow(base, exponent - 1);
+  } else if (exponent < 0) {
+    // console.log(exponent)
+    return 1 / (pow(base, - exponent))
+  }
+
+}
+
+//console.log(pow(2, -5))  // => 0.03125
+
+function flatten(data) {
+  
+  if(!Array.isArray(data)) return [data];
+
+  let allElements = [];
+  console.log(`allElements: ${allElements}`)
+
+   data.forEach(ele => {
+     let flattened = flatten(ele);
+     console.log(`flattened: ${flattened}`)
+
+     allElements.push(...flattened);
+     console.log(`allElements after: ${allElements}`)
+    }
+  );
+
+  return allElements
+
+
+  //Second Method:
+  // return arr.reduce( (flat, toFlatten) =>{
+  //   console.log(" flat"  +flat + ' concat ' + toFlatten)
+  //   return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  // },[]);
+
+
+}
+
+ array_2 = ['this', ['problem', 'is'], [['pretty', 'tough'], [[':)']]]]
+ //console.log(flatten(array_2))      // => [ 'this', 'problem', 'is', 'pretty', 'tough', ':)' ]
+
+ function unique(arr){
+   let set = new Set(arr)
+   return Array.from(set);
+
+ }
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+//console.log(unique(values)); // Hare, Krishna, :-O
+
+
+function aclean(arr) {
+  const aset = new Set();
+  const items = new Map();
+  arr.forEach(item => {
+    let id = item.toLowerCase().split('').sort().join('');
+    if (aset.has(id) && !items.has(id)) {
+      items.set(id, item);
+    } else {
+      aset.add(id)
+    }
+  })
+  return Array.from(items.values());
+}
+
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares","batata"];
+
+//console.log(aclean(arr)); // "nap,teachers,ear" or "PAN,cheaters,era"
