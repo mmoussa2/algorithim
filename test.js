@@ -135,6 +135,24 @@ const result = obj1.find(ele => ele.id === 10);
 //console.log(result);
 
 
+//fib tabulation:
+
+function fib(n){
+if(n === 0) return 0;
+if(n === 1) return 1;
+
+let secondLast = 0;
+let last = 1; 
+
+for(let i = 2 ; i <= n ; i++){
+  temp = last;
+  last = last + secondLast;
+  secondLast = temp;
+}
+return last;
+}
+console.log(fib(7));
+
 
 
 
