@@ -137,22 +137,66 @@ const result = obj1.find(ele => ele.id === 10);
 
 //fib tabulation:
 
-function fib(n){
-if(n === 0) return 0;
-if(n === 1) return 1;
+// function fib(n){
+//   if(n<=0) return 0;
+//   if( n === 1) return 1;
 
-let secondLast = 0;
-let last = 1; 
+//   let secondLast = 0;
+//   let last = 1;
 
-for(let i = 2 ; i <= n ; i++){
-  temp = last;
-  last = last + secondLast;
-  secondLast = temp;
+//   for(let i =2; i <= n ; i++){
+//     temp = last;
+//     last = secondLast + last;
+//     secondLast = temp;
+//   }
+//   return last;
+// }
+
+//console.log(fib(7))
+
+
+//..............
+
+(function(){
+  //"use strict";
+  // if we don't use "use strict" then b is global 
+    var a = b= 4;
+})();
+//  console.log('a  ' + typeof a );
+//  console.log('b  ' + typeof b );
+
+//.............
+var v2
+ function checkUndefined(){
+    var v1 = 1;
+     v2 = v1
+ }
+checkUndefined();
+// console.log('v1  ' + typeof v1); // undefiend bec v1 here is function scope 
+// console.log('v2  ' + typeof v2); // v2 is global scope and then we initialize it 
+
+
+var bar = null;  // null is an object
+
+//console.log( typeof bar === 'object');
+//we have to check if not null first in order to use bar.constructor, otherwise it gives error:
+//console.log(bar.constructor) // if bar  = null => it gives error 
+//console.log( bar !==null && bar.constructor === Object)
+
+// ................................
+
+
+function sum(x){
+  if(arguments.length === 2){
+    return arguments[0] + arguments[1];
+  }
+   return function(y){
+      return x + y
+    }
+  
 }
-return last;
-}
-console.log(fib(7));
 
+console.log(sum(2,3));
+console.log(sum(2)(3));
 
-
-
+//............................
